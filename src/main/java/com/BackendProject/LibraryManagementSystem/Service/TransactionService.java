@@ -11,6 +11,8 @@ import com.BackendProject.LibraryManagementSystem.Repository.BookRepository;
 import com.BackendProject.LibraryManagementSystem.Repository.CardRepository;
 import com.BackendProject.LibraryManagementSystem.Repository.TransactionRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -23,11 +25,14 @@ public class TransactionService {
     BookRepository bookRepository;
     @Autowired
     TransactionRespository transactionRespository;
+
+    @Autowired
+    JavaMailSender mailSender;
     public IssueBookResponseDto issuebook(IssueBookRequestDto issueBookRequestDto) throws Exception {
 
         Transaction transaction = new Transaction();
-        transaction.setTransactionumber(String.valueOf(UUID.randomUUID()));
-        transaction.setIsissuedOperation(true);
+        transaction.setTransactioNumber(String.valueOf(UUID.randomUUID()));
+        transaction.setIsIssuedOperation(true);
 
         LibraryCard libraryCard;
         try {
@@ -72,9 +77,21 @@ public class TransactionService {
         cardRepository.save(libraryCard);
 
         IssueBookResponseDto issueBookResponseDto = new IssueBookResponseDto();
-        issueBookResponseDto.setTransactionId(transaction.getTransactionumber());
+        issueBookResponseDto.setTransactionId(transaction.getTransactioNumber());
         issueBookResponseDto.setTransactionStatus(TransactionStatus.SUCCESS);
         issueBookResponseDto.setBookName(book.getTitle());
+
+        // Send Email here - leaving for end
+        String text = "Congratulations, your book is issued with username -" + transaction.getCard().getStudent().getName()
+                + " and the title of the book is " + book.getTitle() + "."
+                + " And the author of this book is - " + book.getAuthor().getName();
+
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("myk220897@gmail.com");
+        message.setTo(transaction.getCard().getStudent().getEmail());
+        message.setSubject("Your book is issued successfully!!");
+        message.setText(text);
+        mailSender.send(message);
 
         return issueBookResponseDto;
 

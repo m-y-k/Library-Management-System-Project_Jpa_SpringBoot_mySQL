@@ -19,18 +19,24 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String transactionumber;
+
+    private String transactioNumber;
+
     @Enumerated(EnumType.STRING)
     private TransactionStatus transactionStatus;
+
     @CreationTimestamp
     private Date transactionDate;
-    private Boolean IsissuedOperation;
+
+    private Boolean IsIssuedOperation;
+
     private String Message;
+
     @ManyToOne
     @JoinColumn
     Book book;
+
     @ManyToOne
     @JoinColumn
     LibraryCard card;
-
 }
