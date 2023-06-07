@@ -1,5 +1,6 @@
-package com.BackendProject.LibraryManagementSystem.DTO;
+package com.BackendProject.LibraryManagementSystem.DTO.RequestDto;
 
+import com.BackendProject.LibraryManagementSystem.Enum.Genre;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +10,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class BookResponseDto {
+public class BookRequestDto {
     private String title;
     private int price;
+    private Genre genre;
+    private int authorId;
 
 }

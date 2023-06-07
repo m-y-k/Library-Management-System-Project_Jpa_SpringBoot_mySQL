@@ -1,17 +1,18 @@
-package com.BackendProject.LibraryManagementSystem.Service;
+package com.BackendProject.LibraryManagementSystem.Service.Implementation;
 
-import com.BackendProject.LibraryManagementSystem.DTO.StudentRequestDto;
-import com.BackendProject.LibraryManagementSystem.DTO.StudentResponseDto;
-import com.BackendProject.LibraryManagementSystem.DTO.StudentUpdateEmailRequestDto;
+import com.BackendProject.LibraryManagementSystem.DTO.RequestDto.StudentRequestDto;
+import com.BackendProject.LibraryManagementSystem.DTO.ResponseDto.StudentResponseDto;
+import com.BackendProject.LibraryManagementSystem.DTO.RequestDto.StudentUpdateEmailRequestDto;
 import com.BackendProject.LibraryManagementSystem.Entity.LibraryCard;
 import com.BackendProject.LibraryManagementSystem.Entity.Student;
 import com.BackendProject.LibraryManagementSystem.Enum.CardStatus;
 import com.BackendProject.LibraryManagementSystem.Repository.StudentRepository;
+import com.BackendProject.LibraryManagementSystem.Service.Interface.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StudentService {
+public class StudentServiceImpl implements StudentService {
     @Autowired
     StudentRepository studentRepository;
     public void addStudent(StudentRequestDto studentRequestDto){

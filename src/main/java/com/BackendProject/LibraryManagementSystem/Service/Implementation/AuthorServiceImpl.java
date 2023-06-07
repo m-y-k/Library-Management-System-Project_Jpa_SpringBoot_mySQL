@@ -1,15 +1,15 @@
-package com.BackendProject.LibraryManagementSystem.Service;
+package com.BackendProject.LibraryManagementSystem.Service.Implementation;
 
 import com.BackendProject.LibraryManagementSystem.Entity.Author;
-import com.BackendProject.LibraryManagementSystem.Entity.Book;
 import com.BackendProject.LibraryManagementSystem.Repository.AuthorRepository;
+import com.BackendProject.LibraryManagementSystem.Service.Interface.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class AuthorService {
+public class AuthorServiceImpl implements AuthorService {
 
     @Autowired
     AuthorRepository authorRepository;

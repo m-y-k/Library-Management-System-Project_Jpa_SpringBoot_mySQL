@@ -1,7 +1,7 @@
-package com.BackendProject.LibraryManagementSystem.Service;
+package com.BackendProject.LibraryManagementSystem.Service.Implementation;
 
-import com.BackendProject.LibraryManagementSystem.DTO.IssueBookRequestDto;
-import com.BackendProject.LibraryManagementSystem.DTO.IssueBookResponseDto;
+import com.BackendProject.LibraryManagementSystem.DTO.RequestDto.IssueBookRequestDto;
+import com.BackendProject.LibraryManagementSystem.DTO.ResponseDto.IssueBookResponseDto;
 import com.BackendProject.LibraryManagementSystem.Entity.Book;
 import com.BackendProject.LibraryManagementSystem.Entity.LibraryCard;
 import com.BackendProject.LibraryManagementSystem.Entity.Transaction;
@@ -10,6 +10,7 @@ import com.BackendProject.LibraryManagementSystem.Enum.TransactionStatus;
 import com.BackendProject.LibraryManagementSystem.Repository.BookRepository;
 import com.BackendProject.LibraryManagementSystem.Repository.CardRepository;
 import com.BackendProject.LibraryManagementSystem.Repository.TransactionRespository;
+import com.BackendProject.LibraryManagementSystem.Service.Interface.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -18,17 +19,18 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-public class TransactionService {
+public class TransactionServiceImpl implements TransactionService {
     @Autowired
     CardRepository cardRepository;
     @Autowired
     BookRepository bookRepository;
     @Autowired
     TransactionRespository transactionRespository;
-
     @Autowired
     JavaMailSender mailSender;
-    public IssueBookResponseDto issuebook(IssueBookRequestDto issueBookRequestDto) throws Exception {
+
+
+    public IssueBookResponseDto issueBook(IssueBookRequestDto issueBookRequestDto) throws Exception {
 
         Transaction transaction = new Transaction();
         transaction.setTransactioNumber(String.valueOf(UUID.randomUUID()));
@@ -87,7 +89,7 @@ public class TransactionService {
                 + " And the author of this book is - " + book.getAuthor().getName();
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("myk220897@gmail.com");
+        message.setFrom("******@gmail.com");
         message.setTo(transaction.getCard().getStudent().getEmail());
         message.setSubject("Your book is issued successfully!!");
         message.setText(text);

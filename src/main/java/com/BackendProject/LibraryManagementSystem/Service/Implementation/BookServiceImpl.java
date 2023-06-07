@@ -1,18 +1,16 @@
-package com.BackendProject.LibraryManagementSystem.Service;
+package com.BackendProject.LibraryManagementSystem.Service.Implementation;
 
-import com.BackendProject.LibraryManagementSystem.DTO.BookRequestDto;
-import com.BackendProject.LibraryManagementSystem.DTO.BookResponseDto;
+import com.BackendProject.LibraryManagementSystem.DTO.RequestDto.BookRequestDto;
+import com.BackendProject.LibraryManagementSystem.DTO.ResponseDto.BookResponseDto;
 import com.BackendProject.LibraryManagementSystem.Entity.Author;
 import com.BackendProject.LibraryManagementSystem.Entity.Book;
 import com.BackendProject.LibraryManagementSystem.Repository.AuthorRepository;
-import com.BackendProject.LibraryManagementSystem.Repository.BookRepository;
+import com.BackendProject.LibraryManagementSystem.Service.Interface.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class BookService {
+public class BookServiceImpl implements BookService {
     @Autowired
     AuthorRepository authorRepository;
     public BookResponseDto addBook(BookRequestDto bookRequestDto){

@@ -1,10 +1,9 @@
 package com.BackendProject.LibraryManagementSystem.Controller;
 
-import com.BackendProject.LibraryManagementSystem.DTO.StudentRequestDto;
-import com.BackendProject.LibraryManagementSystem.DTO.StudentResponseDto;
-import com.BackendProject.LibraryManagementSystem.DTO.StudentUpdateEmailRequestDto;
-import com.BackendProject.LibraryManagementSystem.Entity.Student;
-import com.BackendProject.LibraryManagementSystem.Service.StudentService;
+import com.BackendProject.LibraryManagementSystem.DTO.RequestDto.StudentRequestDto;
+import com.BackendProject.LibraryManagementSystem.DTO.ResponseDto.StudentResponseDto;
+import com.BackendProject.LibraryManagementSystem.DTO.RequestDto.StudentUpdateEmailRequestDto;
+import com.BackendProject.LibraryManagementSystem.Service.Implementation.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class StudentController {
 
     @Autowired
-    StudentService studentService;
+    StudentServiceImpl studentService;
     @PostMapping("/add")
     public String addStudent(@RequestBody StudentRequestDto studentRequestDto){
         studentService.addStudent(studentRequestDto);

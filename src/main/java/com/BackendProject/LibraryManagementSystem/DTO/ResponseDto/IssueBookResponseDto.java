@@ -1,4 +1,4 @@
-package com.BackendProject.LibraryManagementSystem.DTO;
+package com.BackendProject.LibraryManagementSystem.DTO.ResponseDto;
 
 import com.BackendProject.LibraryManagementSystem.Enum.TransactionStatus;
 import lombok.AllArgsConstructor;

@@ -1,8 +1,8 @@
 package com.BackendProject.LibraryManagementSystem.Controller;
 
-import com.BackendProject.LibraryManagementSystem.DTO.IssueBookRequestDto;
-import com.BackendProject.LibraryManagementSystem.DTO.IssueBookResponseDto;
-import com.BackendProject.LibraryManagementSystem.Service.TransactionService;
+import com.BackendProject.LibraryManagementSystem.DTO.RequestDto.IssueBookRequestDto;
+import com.BackendProject.LibraryManagementSystem.DTO.ResponseDto.IssueBookResponseDto;
+import com.BackendProject.LibraryManagementSystem.Service.Implementation.TransactionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class TransactionController {
 
     @Autowired
-    TransactionService transactionService;
+    TransactionServiceImpl transactionService;
     @PostMapping("/issue_book")
     public ResponseEntity issuebook(@RequestBody IssueBookRequestDto issueBookRequestDto){
         IssueBookResponseDto issueBookResponseDto;
         try {
-            issueBookResponseDto=transactionService.issuebook(issueBookRequestDto);
+            issueBookResponseDto=transactionService.issueBook(issueBookRequestDto);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
         }

@@ -1,8 +1,7 @@
 package com.BackendProject.LibraryManagementSystem.Controller;
 
 import com.BackendProject.LibraryManagementSystem.Entity.Author;
-import com.BackendProject.LibraryManagementSystem.Entity.Book;
-import com.BackendProject.LibraryManagementSystem.Service.AuthorService;
+import com.BackendProject.LibraryManagementSystem.Service.Implementation.AuthorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +11,7 @@ import java.util.List;
 @RequestMapping("/author")
 public class AuthorController {
     @Autowired
-    AuthorService authorService;
+    AuthorServiceImpl authorService;
 
     @PostMapping("/add")
     public String addAuthor(@RequestBody Author author){
