@@ -83,18 +83,6 @@ public class TransactionServiceImpl implements TransactionService {
         issueBookResponseDto.setTransactionStatus(TransactionStatus.SUCCESS);
         issueBookResponseDto.setBookName(book.getTitle());
 
-        // Send Email here - leaving for end
-        String text = "Congratulations, your book is issued with username -" + transaction.getCard().getStudent().getName()
-                + " and the title of the book is " + book.getTitle() + "."
-                + " And the author of this book is - " + book.getAuthor().getName();
-
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("******@gmail.com");
-        message.setTo(transaction.getCard().getStudent().getEmail());
-        message.setSubject("Your book is issued successfully!!");
-        message.setText(text);
-        mailSender.send(message);
-
         return issueBookResponseDto;
 
 
